@@ -24,9 +24,6 @@ export const Timeline: React.FC = () => {
             Day Program
           </p>
           <h2 className="font-script text-3xl sm:text-4xl md:text-7xl mb-3 md:mb-4" style={{ color: '#2C6E91' }}>The Schedule</h2>
-          <p className="font-sans text-xs md:text-sm uppercase tracking-[0.15em] md:tracking-[0.2em]" style={{ color: '#607D96' }}>
-            {weddingData.couple.dateFormatted}
-          </p>
           <div className="gold-divider mt-6">
             <span className="gold-divider-line" />
             <span className="gold-divider-heart">&#10084;</span>
