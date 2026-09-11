@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --registry=https://registry.npmjs.org/",
   "buildCommand": "pnpm --filter @workspace/wedding-invitation build",
   "outputDirectory": "artifacts/wedding-invitation/dist/public",
   "framework": "vite"
