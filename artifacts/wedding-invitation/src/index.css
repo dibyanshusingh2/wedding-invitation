@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-script: "Great Vibes", cursive;
+  --font-sans: "Poppins", sans-serif;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    /* Coastal Elegance palette — cream, blues, gold */
+    --wedding-cream: 42 38% 97%; /* #FCFAF6 */
+
+    --background: 42 38% 97%;    /* Cream #FCFAF6 */
+    --foreground: 201 53% 37%;   /* Primary Blue #2C6E91 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 201 53% 37%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 201 53% 37%;
+
+    --primary: 201 53% 37%;      /* Primary Blue #2C6E91 */
+    --primary-foreground: 0 0% 100%;
+
+    --primary-hover: 190 100% 42%; /* Secondary Accent #00B4D8 */
+
+    --secondary: 190 74% 59%;    /* Accent Blue #48CAE4 */
+    --secondary-foreground: 201 53% 37%;
+
+    --muted: 208 22% 92%;
+    --muted-foreground: 208 22% 48%; /* Muted Blue #607D96 */
+
+    --accent: 42 85% 62%;         /* Gold rgb(240,191,76) #F0BF4C */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 3 55% 66%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 208 22% 88%;
+    --input: 208 22% 88%;
+    --ring: 201 53% 37%;
+
+    --radius: 0.5rem;
+
+    /* Floating luxury panel background */
+    --card-story-from: 260 100% 99%; /* rgb(250,245,255) */
+    --card-story-to: 260 100% 99%;   /* rgb(250,245,255) */
+
+    /* Timeline gold line */
+    --timeline-line: 38 68% 68%; /* #EABD6B */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    background: hsl(var(--wedding-cream));
+    font-size: 87%;
+  }
+  body {
+    @apply text-foreground font-sans antialiased;
+    background: transparent;
+    overflow-x: hidden;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+    font-weight: 400;
+    color: #2C6E91;
+    line-height: 1.25;
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+}
+
+@layer components {
+  /* Shared page-width constraint — everything centered, never full-bleed */
+  .section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Floating luxury card used for every major section (Wonderlust-style).
+     Kept narrower than the section width so the cream background — and
+     the clouds drifting over it — stay clearly visible around every panel. */
+  .luxury-card {
+    width: 80%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 70px;
+    border-radius: 30px;
+    background: rgb(250 245 255);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    .luxury-card {
+      width: 92%;
+      padding: 32px 18px;
+      border-radius: 20px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.06);
+    }
+  }
+
+  /* Vertical spacing between floating panels */
+  .panel-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: 768px) {
+    .panel-section {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+
+  /* Countdown section — always full-bleed edge-to-edge, exactly like the
+     "A Weekend by the Sea" gallery block, at every breakpoint. The
+     background lives on the section itself so it spans the full browser
+     width, never capped by the 1400px section-container. */
+  .countdown-section {
+    padding: 0;
+    background: rgb(250 245 255);
+  }
+
+  .countdown-panel {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 60px 16px;
+  }
+
+  @media (min-width: 769px) {
+    .countdown-panel {
+      padding: 100px 5vw;
+    }
+  }
+
+  /* Gold divider: thin lines + gold heart */
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .gold-divider .gold-divider-line {
+    display: inline-block;
+    width: 64px;
+    height: 1px;
+    background: #F0BF4C;
+  }
+  .gold-divider .gold-divider-heart {
+    color: #F0BF4C;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  /* Diamond marker for timeline — small and clean, no ring/halo bulk */
+  .timeline-diamond {
+    width: 9px;
+    height: 9px;
+    background: #F0BF4C;
+    transform: rotate(45deg);
+  }
+
+  /* Continuous gold vertical line for timeline, animated drawing downward */
+  .timeline-line {
+    width: 1px;
+    background: #F0BF4C;
+    opacity: 0.55;
+    transform-origin: top;
+  }
+
+  /* Full-bleed section that uses the floating-panel color as the section's
+     own background (edge-to-edge, no card/margins) — used for Day Program
+     and Venue so they read like one continuous colored block. */
+  .solid-panel-section {
+    background: rgb(250 245 255);
+    padding: 60px 16px;
+  }
+
+  @media (min-width: 769px) {
+    .solid-panel-section {
+      padding: 100px 5vw;
+    }
+  }
+
+  /* Soft floating cloud decorations */
+  .cloud-decoration {
+    position: absolute;
+    opacity: 0.65;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    filter: drop-shadow(0 8px 12px rgba(230, 170, 200, 0.25));
+  }
+
+  @keyframes cloud-float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 0); }
+  }
+
+  .cloud-float {
+    animation: cloud-float 12s ease-in-out infinite;
+  }
+
+  /* Primary button, per spec */
+  .btn-luxury {
+    background: #2C6E91;
+    color: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(44, 110, 145, 0.25);
+    border-radius: 999px !important;
+    transition: background-color 0.4s ease, transform 0.4s ease;
+  }
+  .btn-luxury:hover {
+    background: #00B4D8;
+  }
+
+  /* White luxury card for Venue / Program / Travel / RSVP */
+  .card-luxury {
+    background: #FFFFFF;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    border-radius: 22px;
+  }
+
+  /* Glass program card — Day Program */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 22px;
+    box-shadow: 0 20px 50px rgba(44, 110, 145, 0.08);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  .glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(44, 110, 145, 0.14);
+  }
+
+  /* Realistic burgundy wax seal for the envelope reveal */
+  .wax-seal {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .wax-seal-glow {
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 191, 76, 0.55) 0%, rgba(240, 191, 76, 0) 70%);
+    opacity: 0;
+    transform: scale(0.7);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .wax-seal-glow-active {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
+  .wax-seal-ring {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 46% 54% 53% 47% / 48% 46% 54% 52%;
+    background:
+      radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 26%),
+      radial-gradient(circle at 68% 78%, #4a0a1c 0%, #6d1128 45%, #8f1c34 100%);
+    box-shadow:
+      0 10px 22px rgba(60, 6, 18, 0.45),
+      inset 0 2px 3px rgba(255, 255, 255, 0.35),
+      inset 0 -6px 10px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wax-seal-face {
+    width: 76%;
+    height: 76%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #8a1a32 0%, #6d1128 55%, #560d20 100%);
+    box-shadow:
+      inset 0 2px 4px rgba(255, 255, 255, 0.25),
+      inset 0 -4px 8px rgba(0, 0, 0, 0.45),
+      0 0 0 2px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wax-seal-initials {
+    font-family: var(--font-script);
+    font-size: 1.35rem;
+    color: #c98b9c;
+    text-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.18),
+      0 -1px 1px rgba(0, 0, 0, 0.55);
+    letter-spacing: 0.02em;
+  }
+
+  /* Glow shown when tapping the seal on the video intro screen */
+  .seal-tap-glow {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 191, 76, 0.45) 0%, rgba(240, 191, 76, 0) 70%);
+    opacity: 0;
+    transform: scale(0.6);
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .seal-tap-glow-active {
+    opacity: 1;
+    transform: scale(1.6);
+  }
+}

@@ -1,0 +1,1 @@
+- [Placeholder audio sourcing](placeholder-audio-sourcing.md) — Mixkit direct URLs 403; archive.org metadata API gives reliable stable audio CDN links.
