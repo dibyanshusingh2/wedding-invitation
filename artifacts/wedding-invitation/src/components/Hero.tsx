@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { weddingData } from '../data/weddingContent';
-import { ChevronDown } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
@@ -85,20 +84,6 @@ export const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div 
-        className="absolute bottom-10 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          <ChevronDown className="text-secondary/70 w-8 h-8" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };
